@@ -1,5 +1,6 @@
 import datetime as dt
 import time
+import winsound
 
 
 class Pomodoro:
@@ -7,8 +8,7 @@ class Pomodoro:
     def __init__(self):
         self.second = dt.timedelta(seconds=1)  # Second to count down
         self.Time = dt.timedelta(minutes=25)  # Pomodoro time
-        self.short_break = dt.timedelta(
-            minutes=5)  # Short-break time
+        self.short_break = dt.timedelta(minutes=5)  # Short-break time
         self.long_break = dt.timedelta(minutes=30)  # Long-break time
         self.Ctime = dt.timedelta()  # Turn based time for count_down function
         self.time_show = dt.timedelta()  # Time for showing after the count_down finish
@@ -48,6 +48,7 @@ class Pomodoro:
                     time.sleep(1.0)
 
             self.turn += 1
+            winsound.PlaySound("SystemQuestion", winsound.SND_ALIAS)
             print(
                 f'You have completed the {self.message}, {int(self.time_show//60)} minutes and {int(self.time_show%60)} seconds working!')
 
